@@ -1048,6 +1048,15 @@ class TeslaFiCollector(object):
             value=float(self.getSetData(teslafi_data, teslafi_data_old, "tpms_rear_right", -1)))
         metrics.append(teslafi_tpms_rear_right)
 
+        teslafi_elevation = GaugeMetricFamily(
+            PROMETHEUS_NAMESPACE + '_elevation',
+            'Elevation in meters',
+            labels=label_keys)
+        teslafi_elevation.add_metric(
+            labels=label_values,
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "elevation", -1)))
+        metrics.append(teslafi_elevation)
+
         return metrics
 
 if __name__ == '__main__':
