@@ -1012,6 +1012,42 @@ class TeslaFiCollector(object):
             value=newVersionStati)
         metrics.append(teslafi_newVersionStatus)
 
+        teslafi_tpms_front_left = GaugeMetricFamily(
+            PROMETHEUS_NAMESPACE + '_tpms_front_left',
+            'TPMS Front Left Tire in PSI',
+            labels=label_keys)
+        teslafi_tpms_front_left.add_metric(
+            labels=label_values, 
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "tpms_front_left", -1)))
+        metrics.append(teslafi_tpms_front_left)
+
+        teslafi_tpms_front_right = GaugeMetricFamily(
+            PROMETHEUS_NAMESPACE + '_tpms_front_right',
+            'TPMS Front Right Tire in PSI',
+            labels=label_keys)
+        teslafi_tpms_front_right.add_metric(
+            labels=label_values, 
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "tpms_front_right", -1)))
+        metrics.append(teslafi_tpms_front_right)
+
+        teslafi_tpms_rear_left = GaugeMetricFamily(
+            PROMETHEUS_NAMESPACE + '_tpms_rear_left',
+            'TPMS Rear Left Tire in PSI',
+            labels=label_keys)
+        teslafi_tpms_rear_left.add_metric(
+            labels=label_values, 
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "tpms_rear_left", -1)))
+        metrics.append(teslafi_tpms_rear_left)
+
+        teslafi_tpms_rear_right = GaugeMetricFamily(
+            PROMETHEUS_NAMESPACE + '_tpms_rear_right',
+            'TPMS Rear Right Tire in PSI',
+            labels=label_keys)
+        teslafi_tpms_rear_right.add_metric(
+            labels=label_values, 
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "tpms_rear_right", -1)))
+        metrics.append(teslafi_tpms_rear_right)
+
         return metrics
 
 if __name__ == '__main__':
