@@ -1,6 +1,6 @@
 FROM python:3-slim
 
-RUN pip3 install prometheus_client requests distutils
+RUN pip3 install prometheus_client requests setuputils
 
 ADD exporter.py /usr/local/bin/teslafi_exporter
 
