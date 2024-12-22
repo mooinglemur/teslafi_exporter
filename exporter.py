@@ -59,13 +59,16 @@ class TeslaFiCollector(object):
         return teslafi_data
 
     def getSetData(self, data, data_old, key, default = None):
-        if data[key] is None or data[key] == '':
-            if data_old[key] is None or data_old[key] == '':
-                return default
+        try:
+            if data[key] is None or data[key] == '':
+                if data_old[key] is None or data_old[key] == '':
+                    return default
+                else:
+                    return data_old[key]
             else:
-                return data_old[key]
-        else:
-            return data[key]
+                return data[key]
+        except KeyError:
+            return default
 
     def collect(self):
         
@@ -349,7 +352,7 @@ class TeslaFiCollector(object):
 
         teslafi_sentry_mode = GaugeMetricFamily(
             PROMETHEUS_NAMESPACE + '_sentry_mode',
-            'Senty mode (0=off, 1=on)',
+            'Sentry mode (0=off, 1=on)',
             labels=label_keys)
         teslafi_sentry_mode.add_metric(
             labels=label_values, 
