@@ -356,7 +356,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_sentry_mode.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "sentry_mode")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "sentry_mode", -1)))
         metrics.append(teslafi_sentry_mode)
 
         teslafi_locked = GaugeMetricFamily(
