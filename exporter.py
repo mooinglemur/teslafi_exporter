@@ -485,31 +485,31 @@ class TeslaFiCollector(object):
         label_values_location.append("front driver")
         teslafi_seat_heater.add_metric(
             labels=label_values_location, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_left")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_left", -1)))
 
         label_values_location = list(label_values)
         label_values_location.append("rear driver")
         teslafi_seat_heater.add_metric(
             labels=label_values_location, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_rear_left")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_rear_left", -1)))
 
         label_values_location = list(label_values)
         label_values_location.append("front passenger")
         teslafi_seat_heater.add_metric(
             labels=label_values_location, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_right")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_right", -1)))
 
         label_values_location = list(label_values)
         label_values_location.append("rear passenger")
         teslafi_seat_heater.add_metric(
             labels=label_values_location, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_rear_right")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_rear_right", -1)))
 
         label_values_location = list(label_values)
         label_values_location.append("rear center")
         teslafi_seat_heater.add_metric(
             labels=label_values_location, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_rear_center")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "seat_heater_rear_center", -1)))
 
         teslafi_homelink_nearby = GaugeMetricFamily(
             PROMETHEUS_NAMESPACE + '_homelink_nearby',
@@ -517,7 +517,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_homelink_nearby.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "homelink_nearby")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "homelink_nearby", -1)))
         metrics.append(teslafi_homelink_nearby)
 
         teslafi_battery_heater_on = GaugeMetricFamily(
@@ -526,7 +526,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_battery_heater_on.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "battery_heater_on")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "battery_heater_on", -1)))
         metrics.append(teslafi_battery_heater_on)
 
         teslafi_is_front_defroster_on = GaugeMetricFamily(
@@ -535,7 +535,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_is_front_defroster_on.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_front_defroster_on")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_front_defroster_on", -1)))
         metrics.append(teslafi_is_front_defroster_on)
 
         teslafi_is_rear_defroster_on = GaugeMetricFamily(
@@ -544,7 +544,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_is_rear_defroster_on.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_rear_defroster_on")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_rear_defroster_on", -1)))
         metrics.append(teslafi_is_rear_defroster_on)
 
         teslafi_defrost_mode = GaugeMetricFamily(
@@ -553,7 +553,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_defrost_mode.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "defrost_mode")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "defrost_mode", -1)))
         metrics.append(teslafi_defrost_mode)
 
         teslafi_is_preconditioning = GaugeMetricFamily(
@@ -562,7 +562,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_is_preconditioning.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_preconditioning")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_preconditioning", -1)))
         metrics.append(teslafi_is_preconditioning)
 
         teslafi_is_auto_conditioning_on = GaugeMetricFamily(
@@ -571,7 +571,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_is_auto_conditioning_on.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_auto_conditioning_on")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_auto_conditioning_on", -1)))
         metrics.append(teslafi_is_auto_conditioning_on)
 
         teslafi_is_climate_on = GaugeMetricFamily(
@@ -580,7 +580,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_is_climate_on.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_climate_on")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_climate_on", -1)))
         metrics.append(teslafi_is_climate_on)
 
         left_temp_direction = self.getSetData(teslafi_data, teslafi_data_old, "left_temp_direction")
