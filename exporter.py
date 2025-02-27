@@ -221,7 +221,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_usable_battery_level.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "usable_battery_level")))
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "usable_battery_level", -1)))
         metrics.append(teslafi_usable_battery_level)
 
         teslafi_battery_range_meter = GaugeMetricFamily(
