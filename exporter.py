@@ -766,7 +766,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_power_kw.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "power")))
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "power", 0)))
         metrics.append(teslafi_power_kw)
 
         car_state = self.getSetData(teslafi_data, teslafi_data_old, "carState")
