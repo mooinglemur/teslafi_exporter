@@ -383,7 +383,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_in_service.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "in_service")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "in_service", -1)))
         metrics.append(teslafi_in_service)
 
         center_display_state = self.getSetData(teslafi_data, teslafi_data_old, "center_display_state")
