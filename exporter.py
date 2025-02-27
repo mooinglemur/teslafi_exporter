@@ -683,7 +683,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_charge_current_request_max_ampere.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_current_request_max")))
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_current_request_max", -1)))
         metrics.append(teslafi_charge_current_request_max_ampere)
 
         teslafi_charge_energy_added_kwh = GaugeMetricFamily(
@@ -692,7 +692,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_charge_energy_added_kwh.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_energy_added")))
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_energy_added", -1)))
         metrics.append(teslafi_charge_energy_added_kwh)
 
         teslafi_charge_range_ideal_added_meter = GaugeMetricFamily(
