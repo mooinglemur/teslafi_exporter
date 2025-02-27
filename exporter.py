@@ -701,7 +701,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_charge_range_ideal_added_meter.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_miles_added_ideal"))*1609.344)
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_miles_added_ideal", -(1/1609.344)))*1609.344)
         metrics.append(teslafi_charge_range_ideal_added_meter)
 
         teslafi_charge_range_rated_added_meter = GaugeMetricFamily(
@@ -710,7 +710,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_charge_range_rated_added_meter.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_miles_added_rated"))*1609.344)
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_miles_added_rated", -(1/1609.344)))*1609.344)
         metrics.append(teslafi_charge_range_rated_added_meter)
 
         teslafi_charge_rate_kmh = GaugeMetricFamily(
@@ -719,7 +719,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_charge_rate_kmh.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_rate"))*1.609344)
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "charge_rate", -(1/1609.344)))*1.609344)
         metrics.append(teslafi_charge_rate_kmh)
 
         teslafi_charger_voltage = GaugeMetricFamily(
