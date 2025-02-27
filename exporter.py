@@ -886,21 +886,22 @@ class TeslaFiCollector(object):
         metrics.append(teslafi_charge_port_led_color)
 
         charge_port_latch = self.getSetData(teslafi_data, teslafi_data_old, "charge_port_latch")
-        charge_port_latches = {
-            'invalid': charge_port_latch=='invalid',
-            'Engaged': charge_port_latch=='Engaged',
-            }
-        if charge_port_latches.get(charge_port_latch) is None:
-            logging.info(f'Unknown/Unexpected charge_port_latch: {charge_port_latch}')
-            charge_port_latches[charge_port_latch] = True
-        teslafi_charge_port_latch = StateSetMetricFamily(
-            PROMETHEUS_NAMESPACE + '_charge_port_latch',
-            'Charge port latch status',
-            labels=label_keys)
-        teslafi_charge_port_latch.add_metric(
-            labels=label_values, 
-            value=charge_port_latches)
-        metrics.append(teslafi_charge_port_latch)
+        if charge_port_latch is not None:
+            charge_port_latches = {
+                'invalid': charge_port_latch=='invalid',
+                'Engaged': charge_port_latch=='Engaged',
+                }
+            if charge_port_latches.get(charge_port_latch) is None:
+                logging.info(f'Unknown/Unexpected charge_port_latch: {charge_port_latch}')
+                charge_port_latches[charge_port_latch] = True
+            teslafi_charge_port_latch = StateSetMetricFamily(
+                PROMETHEUS_NAMESPACE + '_charge_port_latch',
+                'Charge port latch status',
+                labels=label_keys)
+            teslafi_charge_port_latch.add_metric(
+                labels=label_values, 
+                value=charge_port_latches)
+            metrics.append(teslafi_charge_port_latch)
 
         charging_state = self.getSetData(teslafi_data, teslafi_data_old, "charging_state")
         charging_states = {
