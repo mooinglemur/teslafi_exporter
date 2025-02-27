@@ -374,7 +374,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_is_user_present.add_metric(
             labels=label_values, 
-            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_user_present")))
+            value=int(self.getSetData(teslafi_data, teslafi_data_old, "is_user_present", -1)))
         metrics.append(teslafi_is_user_present)
 
         teslafi_in_service = GaugeMetricFamily(
