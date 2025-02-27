@@ -194,7 +194,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_passenger_set_temperature.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "passenger_temp_setting")))
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "passenger_temp_setting", -1000)))
         metrics.append(teslafi_passenger_set_temperature)
 
         teslafi_fan_status = GaugeMetricFamily(
