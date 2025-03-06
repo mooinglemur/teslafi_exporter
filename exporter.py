@@ -629,7 +629,7 @@ class TeslaFiCollector(object):
             labels=label_keys)
         teslafi_time_to_full_charge_seconds.add_metric(
             labels=label_values, 
-            value=float(self.getSetData(teslafi_data, teslafi_data_old, "time_to_full_charge"))*60*60)
+            value=float(self.getSetData(teslafi_data, teslafi_data_old, "time_to_full_charge", -1/3600))*60*60)
         metrics.append(teslafi_time_to_full_charge_seconds)
 
         teslafi_charge_current_request_ampere = GaugeMetricFamily(
