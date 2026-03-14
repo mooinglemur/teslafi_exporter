@@ -94,8 +94,8 @@ class TeslaFiCollector(object):
             'display_name',
             ]
         label_values = [
-            self.getSetData(teslafi_data, teslafi_data_old, "vin"),
-            self.getSetData(teslafi_data, teslafi_data_old, "display_name"),
+            str(self.getSetData(teslafi_data, teslafi_data_old, "vin", "")),
+            str(self.getSetData(teslafi_data, teslafi_data_old, "display_name", "")),
             ]
 
         teslafi_info = InfoMetricFamily(
